@@ -26,13 +26,14 @@ public class ClothoReader {
 
 	public static HashMap<String, RGraph> partImportClotho(ArrayList<Part> partLibrary, HashSet<String> discouraged,
 			HashSet<String> recommended) {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, RGraph> graphMap = new HashMap<>();
+		// FIXME convert partLibrary
+		return graphMap;
 	}
 
 	public static ArrayList<RNode> gpsToNodesClotho(HashSet<Part> gps) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>();
 	}
 
 	public static ArrayList<String> parseTags(ArrayList<String> searchTags, String string) {

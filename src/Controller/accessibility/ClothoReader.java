@@ -20,25 +20,50 @@ import Controller.datastructures.Vector;
 public class ClothoReader {
 
 	public static RVector vectorImportClotho(Vector vector) {
-		// TODO Auto-generated method stub
-		return null;
+		return vector == null ? null : new RVector(vector.getLeftOverhang(), vector.getRightOverhang(), 
+				vector.getLevel(), vector.getName(), vector.getUUID());
 	}
 
-	public static HashMap<String, RGraph> partImportClotho(ArrayList<Part> partLibrary, HashSet<String> discouraged,
+	public static HashMap<String, RGraph> partImportClotho(ArrayList<Part> partLibrary, 
+			HashSet<String> discouraged,
 			HashSet<String> recommended) {
 		HashMap<String, RGraph> graphMap = new HashMap<>();
-		// FIXME convert partLibrary
+		for (Part part:partLibrary) {
+			String name = part.getName();
+			boolean d = discouraged.contains(name);
+			boolean r = recommended.contains(name);
+			RNode node = getNode(part, d, r);
+			RGraph graph = new RGraph(node);
+			graphMap.put(name, graph);
+		}
 		return graphMap;
 	}
 
+	private static RNode getNode(Part part, boolean discouraged,
+			boolean recommended) {
+		RNode node = new RNode();
+		String name = part.getName();
+		node.setName(name);
+		node.setDiscouraged(discouraged);
+		node.setRecommended(recommended);
+		return node;
+	}
+
 	public static ArrayList<RNode> gpsToNodesClotho(HashSet<Part> gps) {
-		// TODO Auto-generated method stub
-		return new ArrayList<>();
+		ArrayList<RNode> nodes = new ArrayList<>();
+		for (Part part:gps) {
+			RNode node = getNode(part, false, false);
+			nodes.add(node);
+		}
+		return nodes;
 	}
 
 	public static ArrayList<String> parseTags(ArrayList<String> searchTags, String string) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> list = new ArrayList<>();
+		if (searchTags != null && searchTags.contains(string)) {
+			list.add(string);
+		}
+		return list;
 	}
 
 }

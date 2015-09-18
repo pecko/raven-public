@@ -67,7 +67,7 @@ public class RGeneral extends Modularity {
 
                 if (newGraph.getRootNode().getComposition().isEmpty()) {
                     System.out.println("WARNING, GOAL PART " + gp.getComposition() + " CANNOT BE BUILT WITH THIS FORBIDDEN SET!");
-                    return null;
+                    return new ArrayList<>();
                     
                 } else {
                     

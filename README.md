@@ -12,4 +12,6 @@ to build it
 
 - start it with
 
-java -jar target/raven-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar target/raven-1.0-SNAPSHOT-jar-with-dependencies.jar endy_OR_gate.csv 
+
+You can test some other csv
